@@ -1,0 +1,19 @@
+python segment/predict.py --weights yolov7-seg.pt --source "football1.mp4" --view-img 
+
+
+
+
+＃ 학습  학습  학습 
+python segment/train.py --epochs 5 --workers 4  --device cpu  --batch-size 10  --data data/water.yaml --img 320 --cfg cfg/training/water.yaml --weights 'yolov7-seg.pt' --name yolov7_seg_haed_finetuned --hyp data/hyp.scratch-high.yaml
+
+python segment/train.py --epochs 10 --workers 4  --device cpu  --batch-size 10  --data data/water.yaml --img 320 --cfg cfg/training/water.yaml --weights 'yolov7-seg.pt' --name yolov7_seg_haed_finetuned --hyp data/hyp.scratch-high.yaml
+
+
+
+학습테스트 예시
+https://github.com/roboflow/notebooks/blob/main/notebooks/train-yolov7-instance-segmentation-on-custom-data.ipynb
+
+%cd {HOME}/yolov7/seg
+
+python segment/predict.py --weights best.pt --conf 0.25 --source test.jpg
+
